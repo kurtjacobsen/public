@@ -1,0 +1,15 @@
+RENOLIE — Tråd-seed (første besked i ny fortsættelse) v1.0.2
+PROJECT=RENOLIE PDF-generator
+GOAL=(kort og konkret for denne fase)
+MILESTONE=(M1|M2|M3|M4)
+FOCUS_MODULES=(fx r101,f101,n101,a101)
+MASTER_LEDGER=https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-master-ledger-v1.0.2.ascii.html
+THREAD_HEADER=https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-thread-header-v1.0.2.ascii.html
+HANDBOOK=https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-handbook-filer-v1.0.2.ascii.html
+MODULGUIDE=https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-modulguide-12-blokke-v1.0.2.ascii.html
+DOD=https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-DoD-checkliste-v1.0.2.ascii.html
+PR=https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-PR-checkliste-v1.0.2.ascii.html
+META_HEADER=https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-meta-header-v1.0.2.ascii.html
+
+Instruktion til GPT:
+“GPT skal konsultere både Master-Ledger og Håndbogen før hvert svar.”

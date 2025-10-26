@@ -1,0 +1,20 @@
+RENOLIE — Modul-ticket skabelon v1.0.2
+
+Modul: (fx f101 ui.format)
+Mål (1 linje): ___________________________
+I/O-kontrakt (kort):
+  input: _________________________________
+  output: ________________________________
+  errors: ________________________________
+
+Test/guldtest:
+- golden 1: _____________________________
+- golden 2: _____________________________
+- edge 1: _______________________________
+- edge 2: _______________________________
+
+Proxy-krav (kun hvis nødvendigt):
+- Endpoint/patch: _______________________
+- Rate/idempotens: ______________________
+
+Definition of Done: se DoD v1.0.2

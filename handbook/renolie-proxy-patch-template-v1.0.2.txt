@@ -1,0 +1,17 @@
+RENOLIE — Proxy-patch skabelon v1.0.2
+
+Patch-navn: (fx a101-idempotens-lite)
+Formål (1 linje): _______________________
+Berørte filer: renolie-proxy.mjs (sektioner __/__)
+Ændringer (kort):
+- ______________________________________
+- ______________________________________
+
+Tests:
+- /healthz
+- /chat/send eller /chat/stream (beskriv)
+- Redis set/get (hvis relevant)
+
+Rollback-plan:
+- Redeploy forrige build via Render
+- ENV uændret (eller dokumenteret)
