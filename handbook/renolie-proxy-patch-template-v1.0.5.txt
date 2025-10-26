@@ -1,0 +1,12 @@
+RENOLIE Proxy Patch Template v1.0.5
+Patch: /pdf/make (rm_b64) + /pdf/echo
+
+DoD
+- POST /pdf/make accepterer { rm_b64, filename } (ASCII-safe recipe_markdown i base64)
+- Returnerer { ok:true, pdfUrl } (placeholder-URL indtil rigtig PDF-motor)
+- GET /pdf/echo svarer OK og returnerer query-echo
+- /healthz viser version og enc=ASCII-only
+
+Test
+- node x037.js --url="<SELF_URL>/pdf/make"  => OK + pdfUrl
+- curl "<SELF_URL>/pdf/echo?demo=1"         => OK + demo

@@ -1,0 +1,28 @@
+<!doctype html>
+<meta charset=us-ascii>
+<title>RENOLIE Master-Ledger v1.0.4 (ASCII)</title>
+<h1>RENOLIE Master-Ledger v1.0.4</h1>
+<p>Faelles sandhed for regler, faser og DoD.</p>
+<h2>Top-regler</h2>
+<ol>
+<li>ZIP=off &bull; README=off &bull; Start=node renolie-proxy.mjs &bull; Build=npm install --omit=dev</li>
+<li>Frontend/UI ASCII-safe (danske bogstaver som HTML-entities)</li>
+<li>Anchortekst = eksakt filnavn</li>
+<li>Render-proxy i direct-mode; /healthz skal returnere mode=direct</li>
+<li>Aktiv laesning: GPT skal laese <b>Meta-Header</b> + <b>Haandbog</b> + <b>Thread-Header</b> foer hvert svar og rapportere traad-belastning (0-100 %)</li>
+<li><b>Aaben fejlmelding:</b> Hvis et dokument eller vaerktoej ikke kan laeses/anvendes, skal GPT tydeligt oplyse dette i svaret (ingen stiltiende antagelser).</li>
+<li><b>Fallback-regel for dokumenter:</b> Hvis RAW-links (raw.githubusercontent.com) fejler, skiftes automatisk til HTML-visning (github.com/.../blob/.../?raw=1) og brugeren informeres.</li>
+<li><b>Aktiveringskrav:</b> Traad-seed skal bede GPT om at aktivere instruktionerne fra dokumenterne (se Thread-Seed-template).</li>
+</ol>
+<h2>Milepaele</h2>
+<ul>
+<li>M1: r101 + f101 + n101 + a101 -> stabil stream</li>
+<li>M2: s101 + c101 + u101 -> persona/allowlist (nu som s102/c105/u106 ESM)</li>
+<li>M3: q101 + p101 -> recipe -> PDF (mock)</li>
+<li>M4: t101 + g101 + h101 -> telemetry/rate/health</li>
+</ul>
+<h2>Aabne tasks</h2>
+<ul>
+<li>pdf-c23c-001: /pdf/make fra rm_b64 (PATCH implementeret i proxy v3.6.18-c23c)</li>
+<li>stream-002: event/timeout-hygiejne (viderefoeres)</li>
+</ul>

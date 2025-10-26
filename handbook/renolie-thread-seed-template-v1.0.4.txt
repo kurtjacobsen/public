@@ -1,0 +1,10 @@
+[RENOLIE - Thread Seed v1.0.4]
+Traadbelastning: 0 % (0-100)
+
+Laes venligst disse links FOeR vi arbejder videre (aktivt aabne alle og AKTIVER de instruktioner, der fremgaar af dokumenterne; brug RAW->HTML fallback hvis noedvendigt):
+1) Master-Ledger: <MASTER_LEDGER_URL>
+2) Meta-Header: <META_HEADER_URL>
+3) Thread-Header: <THREAD_HEADER_URL>
+4) Haandbog (filer): <HANDBOG_FILER_URL>
+
+Boot Check: ZIP=off ? README=off ? Start=node renolie-proxy.mjs ? Build=npm install --omit=dev ? ASCII-only UI ? Anchor=exact filename ? TZ=Europe/Copenhagen ? Warn@70%

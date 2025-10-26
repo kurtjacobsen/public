@@ -1,0 +1,9 @@
+renolie-modul-ticket-template-v1.0.5.txt ---------------------------------------
+Module:
+Version:
+Owner:
+Contract (Input/Output/Errors):
+Tests (5-8):
+Integration proof link (x00N.js or harness HTML):
+Changelog (<=10 lines):
+Notes / Risks:

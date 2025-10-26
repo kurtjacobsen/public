@@ -1,0 +1,12 @@
+[RENOLIE Handover-Pack v1.0.6]
+Indhold (opdaterede dokumenter):
+- renolie-master-ledger-v1.0.4.ascii.html
+- renolie-meta-header-v1.0.4.ascii.html
+- renolie-thread-header-v1.0.4.ascii.html
+- renolie-thread-seed-template-v1.0.4.txt
+- renolie-handover-meta-checkliste-v1.0.6.ascii.html
+- renolie-handover-pack-template-v1.0.6.txt
+- renolie-modul-ticket-template-v1.0.5.txt
+- renolie-proxy-patch-template-v1.0.5.txt
+
+Note: Seed-linjen inkluderer nu aktiveringskrav + RAW->HTML fallback + aaben fejlmelding.
