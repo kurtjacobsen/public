@@ -1,0 +1,57 @@
+<!-- renolie-handbook-thread-status-addendum-v1.0.7.ascii.html -->
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<title>RENOLIE — Trådstatus (belastning) — Addendum v1.0.7</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;margin:24px;line-height:1.4}
+code{background:#f6f6f6;padding:2px 4px;border-radius:4px}
+h1,h2{margin:0 0 10px 0}
+small{color:#666}
+ul{margin-top:6px}
+</style>
+</head>
+<body>
+<h1>RENOLIE — Trådstatus (belastning) — Addendum <small>v1.0.7</small></h1>
+
+<p><b>Formål:</b> At definere præcist, hvordan “Trådbelastning 0–100%” beregnes i hver tråd, så vi ved, hvornår der bør skiftes til ny tråd.</p>
+
+<h2>Definition</h2>
+<p><b>Trådbelastning</b> = (estimerede tokens i hele tråden indtil nu) / (model-kontekstkapacitet) × 100%.</p>
+
+<h2>Kapacitetsgrænser (Standard)</h2>
+<ul>
+<li><b>Warn@70%</b>: Assistenten viser tydelig advarsel (risiko for træge svar).</li>
+<li><b>Hard@85%</b>: Foreslå trådskifte aktivt og lever færdig handover-tekst.</li>
+<li><b>Cut@95%</b>: Skift tråd omgående for at undgå klip/tab.</li>
+</ul>
+
+<h2>Estimeringsmetode (praktisk)</h2>
+<ol>
+<li>Tekst → tokens: antag ca. <b>1 token ≈ 4 tegn</b> (ASCII-baseret estimering).</li>
+<li>Code blocks og filer tæller fuldt ud (inkl. whitespace).</li>
+<li>Billeder og binære filer ignoreres; deres <i>referencer</i> tæller som tekst.</li>
+<li>System + projekthukommelse: lægges oveni med fast overhead på <b>~3.5k tokens</b>.</li>
+<li>Aktuel model-kontekst: <b>~128k tokens</b> (kan justeres i Meta-Header ved modelskift).</li>
+</ol>
+
+<h2>Praktiske tommelfingerregler</h2>
+<ul>
+<li>“Mange kodefiler/patches i én tråd” = hurtig stigning (10–20% hver håndfuld filer).</li>
+<li>Handover-lister og lange logs = mærkbart boost (2–8%).</li>
+<li>Korte Q&A uden filer = langsom stigning (0.5–1% pr. svarpar).</li>
+</ul>
+
+<h2>Handling ved grænser</h2>
+<ul>
+<li><b>Ved ≥70%:</b> Vis statusbanner og tilbyd ny tråd.</li>
+<li><b>Ved ≥85%:</b> Auto-generér handover-pakke (links + seneste filer) og foreslå skift.</li>
+<li><b>Ved ≥95%:</b> Gennemfør skift straks efter at have leveret handover.</li>
+</ul>
+
+<h2>Implementeringsnote</h2>
+<p>Assistenten beregner løbende estimeret længde baseret på synlig tekst + kode i tråden og projektoverhead. Værdien rundes til nærmeste hele procent.</p>
+
+</body>
+</html>
