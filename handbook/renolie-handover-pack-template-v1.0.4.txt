@@ -1,0 +1,48 @@
+RENOLIE Handover-Pack v1.0.4
+--------------------------------
+A. Meta
+- Dato/tid: ________________________
+- Traad (titel + direkte link): ________________________
+- Version-tag: ______________________
+- Milepael (M1–M4): _________________
+- Traadbelastning ved afslutning: ___ % (0-100)
+
+B. Resultater
+- Leverede filer (med versionsnavne):
+  1) ______________________________________
+  2) ______________________________________
+- Groenne tests: ____________________________
+- Roede tests: ______________________________
+
+C. Beslutninger
+- _________________________________________
+
+D. ENV / Drift (kun navne, ikke vaerdier)
+- Aendrede ENV-noegler: _____________________
+- Render-handlinger: _______________________
+
+E. Naeste skridt
+1) ________________________________________
+2) ________________________________________
+
+L&AElig;SEINSTRUKTION (skal efterleves i foerste svar i ny traad)
+- Laes venligst foelgende dokumenter, foer du forts&aelig;tter.
+- Du maa aktivt &aring;bne og laese hvert link for at forstaa regler, status og procedurer:
+  1) Master-Ledger: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-master-ledger-v1.0.3.ascii.html
+  2) Meta-Header: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-meta-header-v1.0.3.ascii.html
+  3) Thread-Header: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-thread-header-v1.0.3.ascii.html
+  4) Thread-Seed: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-thread-seed-template-v1.0.3.txt
+  5) Haandbog: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-handbook-filer-v1.0.3.ascii.html
+  6) Modulguide: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-modulguide-12-blokke-v1.0.3.ascii.html
+  7) DoD-checkliste: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-DoD-checkliste-v1.0.3.ascii.html
+  8) PR-checkliste: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-PR-checkliste-v1.0.3.ascii.html
+  9) Handover Meta-Checkliste: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-handover-meta-checkliste-v1.0.3.ascii.html
+ 10) Handover-Pack template: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-handover-pack-template-v1.0.4.txt
+ 11) Modul-ticket template: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-modul-ticket-template-v1.0.3.txt
+ 12) Proxy‑patch template: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-proxy-patch-template-v1.0.3.txt
+
+- Skriv i foerste svar: “Jeg har laest alle 12 links og forstaaet indholdet.”
+- GPT skal laese Master‑Ledger og Haandbog foer hvert svar.
+- Indled hvert svar med “Traadbelastning: __ % (0–100)”. Advar ved ca. 80 % og foreslaa traadskifte.
+
+Bem&aelig;rk: Denne skabelon er v1.0.4 og erstatter tidligere handover‑skabeloner.
