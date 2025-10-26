@@ -1,0 +1,33 @@
+RENOLIE Handover‑Pack v1.0.3
+--------------------------------
+A. Meta
+- Dato/tid: ________________________
+- Tråd: ____________________________ (titel + direkte link)
+- Version-tag: ______________________
+- Milepæl (M1–M4): _________________
+- Trådbelastning ved afslutning: ___ %
+
+B. Resultater
+- Leverede filer (med versionsnavne):
+  1) ______________________________________
+  2) ______________________________________
+- Grønne tests: ____________________________
+- Røde tests: ______________________________
+
+C. Beslutninger
+- _________________________________________
+
+D. ENV / Drift (kun navne, ikke værdier)
+- Ændrede ENV-nøgler: _____________________
+- Render-handlinger: _______________________
+
+E. Næste skridt
+1) ________________________________________
+2) ________________________________________
+
+Instruktion:
+- Læs venligst følgende links. Du må aktivt åbne hvert link for at forstå regler og status.
+  https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-master-ledger-v1.0.3.ascii.html
+  https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-handbook-filer-v1.0.3.ascii.html
+  https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-thread-header-v1.0.3.ascii.html
+- GPT skal **læse** både Master-Ledger og Håndbogen før hvert svar.

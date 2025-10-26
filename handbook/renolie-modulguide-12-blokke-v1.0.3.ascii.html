@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="da"><head><meta charset="utf-8">
+<title>RENOLIE Modulguide — 12 JS‑blokke v1.0.3 .ascii.html</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline';"></head><body><pre>
+RENOLIE Modulguide — 12 JS‑blokke (v1.0.3)
+------------------------------------------
+Form&aring;l: Samlet reference for alle 12 moduler (ansvar, I/O, fejl, tests og milep&aelig;le).
+Arbejdsform: Ét modul ad gangen; f&oslash;lg DoD; patch kun proxy n&aring;r n&oslash;dvendigt.
+
+R&aelig;kkef&oslash;lge og kort kontrakt (v1):
+1) r101 rules.core — input: str/rules; output: helpers; errors: RULE_MISSING.
+2) f101 ui.format — input: delta:string; output: html:string; errors: BAD_DELTA.
+3) n101 net.client — input: {url,body}; output: data|stream; errors: HTTP_xx/TIMEOUT.
+4) a101 net.stream-adapter — input: req/res; output: event&lt;delta|done|error&gt;; errors: DUPLICATE/UPSTREAM_TIMEOUT.
+5) s101 store.persona — input: {userId,obj}; output: ok|obj|null; errors: REDIS_DOWN.
+6) c101 store.allowlist — input: none/force; output: list/stats; errors: FEED_INVALID.
+7) u101 ui.controller — input: user actions; output: render ops; errors: none.
+8) q101 pdf.schema — input: recipeDraft; output: ok|errors[]; errors: VALIDATION.
+9) p101 pdf.adapter — input: recipe; output: pdfUrl|blobRef; errors: PDF_FAIL.
+10) t101 telemetry — input: context/log; output: runId, ok; errors: STORE_FAIL.
+11) g101 rate.guard — input: ip/route/requestId; output: ok|limited|duplicate; errors: STORE_FAIL.
+12) h101 ops.health — input: GET /healthz; output: 200 + enc-line; errors: 500 on deps.
+
+Milep&aelig;le (M1→M4):
+- M1: r101 + f101 + n101 + a101 — stabil stream, ingen dobbelt-output.
+- M2: s101 + c101 + u101 — persona gem/hent; allowlist cache.
+- M3: q101 + p101 — recipe → PDF happy path.
+- M4: t101 + g101 + h101 — telemetry, rate-limit, health/ops.
+
+Testkrav:
+- 5–8 tests pr. modul (inkl. edge-cases).
+- Formatterings-guldtests for f101.
+- Redis ping + idempotens-test for a101/g101.
+- Healthz svarer med enc=ASCII-only.
+
+Læs altid f&oslash;r arbejde: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-handbook-filer-v1.0.3.ascii.html
+</pre></body></html>

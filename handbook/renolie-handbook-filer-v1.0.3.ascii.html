@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="da">
+<head><meta charset="utf-8">
+<title>RENOLIE Handbook (Filer & Arbejdsregler) v1.0.3 .ascii.html</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline';">
+</head>
+<body><pre>
+RENOLIE Handbook (Filer & Arbejdsregler) v1.0.3 .ascii.html
+------------------------------------------------------------
+Scope: Frisk, fokuseret regelbog for denne mastertråd og dens fortsættelser.
+Mål: Altid levere færdige, downloadklare filer; ASCII-sikre artefakter; stabil drift.
+
+1) Leveringsregler
+- Alle leverancer er klar til brug: .mjs, .js, .json, .ascii.html eller .zip (kun hvis bedt om).
+- Filnavne: ultrakorte (frontend) – ét bogstav + 3 cifre + .js (fx f101.js). Ingen ?v=.
+- Ankertekst = eksakt filnavn. Version i filnavnet. ZIP=off og README=off som standard.
+
+2) Encoding & ASCII
+- Transport/lagring: ren ASCII i kode, JSON, logs, Redis og filnavne.
+- UI: danske bogstaver som HTML-entities (&aelig; &oslash; &aring; &AElig; &Oslash; &Aring;).
+- PDF: konverter til UTF‑8 i sidste led (pdf.adapter) med korrekte fonte.
+- Undgå smart quotes og ustandardtegn i UI/kode.
+
+3) Arkitektur
+Frontend (sfstatic/DanDomain) -> Proxy (Render) -> Upstash Redis + OpenAI/PDF/Feeds.
+
+4) Proxy (Render) – Boot Check
+- Build: npm install --omit=dev
+- Start: node renolie-proxy.mjs
+- ENV: jf. baseline
+- Health: /healthz OK + enc-check.
+- Cron: hold‑varm pinger /healthz.
+- CORS_ORIGIN/FRAME_ANCESTORS efter baseline.
+
+5) Modulopdeling & Milepæle
+- 12 blokke: r101, f101, n101, a101, s101, c101, u101, q101, p101, t101, g101, h101.
+- M1: r101+f101+n101+a101; M2: s101+c101+u101; M3: q101+p101; M4: t101+g101+h101.
+
+6) Test & Debug
+- Debug-panel i UI; formatterings‑guldtests; chaos light; idempotens; rate‑limit.
+- Health og logs bruges før kodeændring.
+
+7) Kommunikations- og samarbejdsregler
+- **Trådbelastning:** Hvert svar starter med “Trådbelastning: __ % (0–100)”. Ved ca. 80 %: advar og foreslå trådskifte.
+- **Præcisering ved fil‑tjek:** Hvis min anmodning er uklar (fx “bekræft at du kan læse …”), så spørg:
+  “Vil du have, at jeg aktivt læser indholdet, eller blot bekræfter format/tilgængelighed?”
+- **Læs‑formulering:** Brug altid “Læs venligst følgende links … du må aktivt åbne hvert link …”
+- Ingen hemmeligheder i kode/UI/logs. Brug Render ENV og Upstash til nøgler/state.
+
+Se også: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-modulguide-12-blokke-v1.0.3.ascii.html
+</pre>
+</body>
+</html>
