@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>renolie-handbook-filer-v1.0.5.ascii.html</title>
+</head>
+<body>
+<h1>RENOLIE Handbook (filer) v1.0.5 (ascii)</h1>
+<p><b>Gyldig fra:</b> 2025-10-26 &middot; <b>Tidszone:</b> Europe/Copenhagen</p>
+<h2>0) Formaal</h2>
+<p>Dokumentet erstatter v1.0.3 i dette projekt og samler opdateringer for M1&rarr;M2.</p>
+<h2>1) Leveringsregler</h2>
+<ol>
+  <li><b>Faerdige downloads:</b> Filer leveres som direkte downloadbare filer. Kode listes ikke i traaden. Ankertekst = eksakt filnavn.</li>
+  <li>ZIP=off (kun ved eksplicit anmodning). README=off (kun ved klart behov).</li>
+</ol>
+<h2>2) Filnavngivning (frontend/js)</h2>
+<ul>
+  <li><b>Strengt format for js:</b> <code>[a-z][0-9]{3}.js</code> (fx <code>r101.js</code>, <code>f104.js</code>, <code>n101.js</code>).</li>
+  <li><b>Testfiler:</b> brug x-serien (<code>x001.js</code>, <code>x010.js</code> ...).</li>
+  <li>Ingen <code>?v=</code>-parametre i fil-URL'er.</li>
+</ul>
+<h2>3) M1 (status)</h2>
+<ul>
+  <li>r101 (rules.core), f104 (ui.format), n101 (net.client), a101 (stream-adapter) + <i>strict</i> integrationstest <code>x010.js</code> = <b>GR&Oslash;N</b>.</li>
+</ul>
+<h2>4) M2 (maal)</h2>
+<ul>
+  <li><b>s101</b>: persona save/load/remove (mock nu; senere Redis).</li>
+  <li><b>c101</b>: allowlist load/parse (mock nu; senere HTTP via n101).</li>
+  <li><b>u102</b>: UI-controller, som binder s101 + c101 + f104 (+ n101 live senere).</li>
+</ul>
+<h2>5) ASCII/formatteringspolitik</h2>
+<ul>
+  <li>Transport/lagring: ren ASCII.</li>
+  <li>UI: danske bogstaver som HTML-entities (&amp;aelig; &amp;oslash; &amp;aring; ...).</li>
+  <li>PDF: UTF-8 via font-URL (uaendret fra v1.0.3).</li>
+</ul>
+<h2>6) Proxy/Render baseline</h2>
+<ul>
+  <li>Build: <code>npm install --omit=dev</code> &middot; Start: <code>node renolie-proxy.mjs</code></li>
+  <li>Health: <code>/healthz</code> viser OK + enc-check.</li>
+  <li>CORS_ORIGIN: https://shop96018.sfstatic.io, https://www.renolie.dk, https://renolie.dk</li>
+</ul>
+<h2>7) Status/Traadbelastning</h2>
+<ul>
+  <li>Hvert svar starter med: <code>Traadbelastning: __ % (0&ndash;100)</code>.</li>
+  <li><b>Advar ved 70%</b> og foreslaa traadskifte.</li>
+</ul>
+<h2>8) DoD (kort)</h2>
+<ul>
+  <li>Kontrakt-header, 5&ndash;8 kontrakt-tests pr. modul, ingen dybe afhaengigheder, changelog &le; 10 linjer.</li>
+</ul>
+<h2>9) Henvisninger</h2>
+<ul>
+  <li>M1 harness (browser): <code>renolie-m1-harness.v2.ascii.html</code> + <code>w101.js</code> (mock-only).</li>
+</ul>
+<hr>
+<p><b>Changelog v1.0.5</b></p>
+<ul>
+  <li>Indfoert streng js-navngivning ([a-z][0-9]{3}.js) + x-serie til tests.</li>
+  <li>Flyttet traad-advarsel til 70%.</li>
+  <li>M1 afsluttet (strict integration x010), M2 maal indsat.</li>
+</ul>
+</body>
+</html>

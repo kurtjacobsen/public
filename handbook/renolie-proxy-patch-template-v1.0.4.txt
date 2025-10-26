@@ -1,0 +1,16 @@
+renolie-proxy-patch-template-v1.0.4.txt
+--------------------------------------
+Scope:
+- Minor clarification: CORS_ORIGIN list and FRAME_ANCESTORS format
+- No functional changes to Start/Build
+
+Checklist:
+- Build: npm install --omit=dev
+- Start: node renolie-proxy.mjs
+- Health: /healthz shows OK + enc-check
+- CORS_ORIGIN: https://shop96018.sfstatic.io, https://www.renolie.dk, https://renolie.dk
+- FRAME_ANCESTORS (space-separated): https://shop96018.sfstatic.io https://www.renolie.dk https://renolie.dk
+
+Notes:
+- Keep PROXY_BASE=https://api.openai.com/v1
+- Keep ALLOWLIST_FEED_URL set; move secrets to Render env

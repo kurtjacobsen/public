@@ -1,0 +1,44 @@
+[RENOLIE — M2 Handover Seed]
+Traadbelastning: 0 % (0–100)
+
+Laes venligst disse links FOeR vi arbejder videre (aktivt aabne alle):
+1) Master-Ledger: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-master-ledger-v1.0.3.ascii.html
+2) Meta-Header: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-meta-header-v1.0.3.ascii.html
+3) Thread-Header: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-thread-header-v1.0.3.ascii.html
+4) Thread-Seed: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-thread-seed-template-v1.0.3.txt
+5) Haandbog (filer): https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-handbook-filer-v1.0.5.ascii.html
+6) Modulguide (12 blokke): https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-modulguide-12-blokke-v1.0.3.ascii.html
+7) DoD-checkliste: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-DoD-checkliste-v1.0.3.ascii.html
+8) PR-checkliste: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-PR-checkliste-v1.0.3.ascii.html
+9) Handover-Meta-Checkliste: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-handover-meta-checkliste-v1.0.5.ascii.html
+10) Handover-Pack-template: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-handover-pack-template-v1.0.5.txt
+11) Modul-ticket-template: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-modul-ticket-template-v1.0.4.txt
+12) Proxy-patch-template: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-proxy-patch-template-v1.0.4.txt
+
+Boot Check: ZIP=off • README=off • Start=node renolie-proxy.mjs • Build=npm install --omit=dev • ASCII-only UI • Anchor=exact filename • TZ=Europe/Copenhagen • Warn@70%
+
+Status (M1): GROeN
+- Moduler: r101, f104, n101, a101
+- Tests: x006 (f102 unit), x007 (M1 integ f103), x009 (f104 unit), x010 (M1 strict integ) — alle OK
+- Harness: renolie-m1-harness.v2.ascii.html + w101.js (mock-only) — OK
+
+Maal (M2):
+- s101: persona save/load/remove (mock nu; senere Redis via proxy)
+- c101: allowlist load/parse (mock nu; senere HTTP via n101.requestJSON)
+- u102: UI-controller, som binder s101 + c101 + f104 (+ n101 live senere)
+
+Fokus-moduler: s101, c101, u102
+
+M2 artefakter (lokale filer i denne traad — upload evt. til sfstatic ved behov):
+- s101.js
+- x011.js
+- c101.js
+- x012.js
+- u102.js
+- x013.js
+
+Instruktion (foerste kommandoer):
+- Koer lokalt: node x011.js, node x012.js, node x013.js — forvent alle GROeN.
+
+Bemærk:
+- Denne handover seed forudsaetter at ovenstaaende 12 dokumenter er uploadet til GitHub med de anviste filnavne og versioner.
