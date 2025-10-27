@@ -1,2 +1,0 @@
-[RENOLIE Thread Seed Template v1.0.8]
-Use for initializing new threads.
