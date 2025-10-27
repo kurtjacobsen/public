@@ -1,0 +1,28 @@
+# RENOLIE Master-Ledger v1.0.5
+
+Faelles sandhed for regler, faser og DoD. (Opdateret: traadstatus-addendum + proxy-status)
+
+## Top-regler
+  1. ZIP=off • README=off • Start=node renolie-proxy.mjs • Build=npm install --omit=dev
+  2. Frontend/UI ASCII-safe (danske bogstaver som HTML-entities)
+  3. Anchortekst = eksakt filnavn
+  4. Render-proxy i direct-mode; /healthz skal returnere mode=direct
+  5. Aktiv laesning: GPT skal laese Meta-Header + Haandbog + Thread-Header foer hvert svar og rapportere traad-belastning (0-100 %)
+  6. Aaben fejlmelding: Hvis et dokument eller vaerktoej ikke kan laeses/anvendes, skal GPT tydeligt oplyse dette i svaret (ingen stiltiende antagelser).
+  7. Fallback-regel for dokumenter: Hvis RAW-links fejler, skiftes automatisk til HTML-visning (github.com/.../blob/.../?raw=1) og brugeren informeres.
+  8. Aktiveringskrav: Thread-seed skal bede GPT om at aktivere instruktionerne fra dokumenterne (se Thread-Seed-template).
+  9. Traadstatus-addendum v1.0.7: Warn@70 %, Hard@85 %, Cut@95 % (assistenten viser procent i hver besked).
+
+## Milepaele
+  * M1: r101 + f101 + n101 + a101 -> stabil stream
+  * M2: s102 + c105 + u106 -> persona/allowlist (ESM) — GROEN
+  * M3: q101 + p101 -> recipe -> PDF (mock) — GROEN
+  * M4: t101 + g101 + h101 -> telemetry/rate/health — GROEN
+
+## Status (proxy)
+  * Proxy: v3.6.21-p104 — /healthz OK • /allowlist OK (items>0) • /pdf/make OK
+  * Feed: ProfitMetrics777v (XML) mappet til {name,url}
+
+## Aabne tasks
+  * Autocomplete fra /allowlist i UI (top 10)
+  * p104-udvidelse: rigtig recipe-payload (title, items[], links[])

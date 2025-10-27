@@ -1,0 +1,13 @@
+[RENOLIE - Thread Seed v1.0.5]
+Traadbelastning: 0 % (0-100)
+
+Laes venligst disse links FOeR vi arbejder videre
+(aktivt aabn alle og AKTIVER instruktionerne; brug RAW->HTML fallback hvis noedvendigt):
+
+Master-Ledger: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-master-ledger-v1.0.5.ascii.html
+Meta-Header: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-meta-header-v1.0.5.ascii.html
+Thread-Header: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-thread-header-v1.0.5.ascii.html
+Haandbog (filer): https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-handbook-filer-v1.0.7.ascii.html
+Thread-status-addendum: https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-handbook-thread-status-addendum-v1.0.7.ascii.html
+
+Boot Check: ZIP=off • README=off • Start=node renolie-proxy.mjs • Build=npm install --omit=dev • ASCII-only UI • Anchor=exact filename • TZ=Europe/Copenhagen • Warn@70 %
