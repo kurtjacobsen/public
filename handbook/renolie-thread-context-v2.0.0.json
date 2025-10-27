@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "project": "RENOLIE PDF-generator & Chat",
+  "phase": "2.0.0",
+  "timestamp": "2025-10-27T00:00:00+01:00",
+  "env": {
+    "CORS_ORIGIN": "https://shop96018.sfstatic.io",
+    "MODEL_DEFAULT": "gpt-5",
+    "ALLOWLIST_FEED_URL": "<set-to-live-feed-url>",
+    "PDF_BACKEND_URL": "<optional until real PDF is ready>",
+    "PROXY_BASE": "https://renolie-proxy.onrender.com"
+  },
+  "endpoints": {
+    "healthz": "https://renolie-proxy.onrender.com/healthz",
+    "allowlist": "https://renolie-proxy.onrender.com/allowlist",
+    "pdf_make": "https://renolie-proxy.onrender.com/allowlist",
+    "chat_stream": "https://renolie-proxy.onrender.com/chat/stream (planned)"
+  },
+  "ui_cdn_base": "https://shop96018.sfstatic.io/upload_dir/pics/files",
+  "constraints": {
+    "ascii_only": true,
+    "no_inline_script": true,
+    "script_src": "'self'",
+    "anchor_exact_filename": true,
+    "thread_gauge": {
+      "warn": 70,
+      "hard": 85,
+      "cut": 95
+    },
+    "js_names": [
+      "u112.js",
+      "r101.js",
+      "f101.js",
+      "n101.js",
+      "a101.js"
+    ],
+    "boot_check": "ZIP=off * README=off * Start=node renolie-proxy.mjs * Build=npm install --omit=dev * ASCII-only UI * Anchor=exact filename * TZ=Europe/Copenhagen * Warn@70% * Hard@85% * Cut@95%"
+  },
+  "artifacts": []
+}

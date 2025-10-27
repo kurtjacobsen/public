@@ -1,0 +1,32 @@
+
+RENOLIE v2.0.0 — JS State & Decisions (carry-over)
+
+• Versions in use (frontend): 
+  - renolie-m2m3m4-v1.0.10.ascii.html  (UI: title/items/links, suggest box, no inline JS, strict CSP)
+  - u112.js                            (absolute PROXY_BASE via data-proxy-base, robust JSON checks)
+  - r101.js / f101.js / n101.js / a101.js  (M1 testrunner modules: rules, format, net, SSE adapter)
+  - renolie-m1-tests-v1.0.0.ascii.html   (M1 harness)
+
+• Proxy (deployed): v3.6.22-p110 (clean)
+  - /healthz -> https://renolie-proxy.onrender.com/healthz
+  - /allowlist -> https://renolie-proxy.onrender.com/allowlist (live JSON or XML normalized)
+  - /pdf/make -> https://renolie-proxy.onrender.com/pdf/make (mock about:blank if no PDF_BACKEND_URL)
+
+• Constraints
+  - File naming: ultra-short .js (no querystrings)
+  - ASCII-only UI: use HTML entities for &aelig; &oslash; &aring;
+  - CSP: script-src 'self'; no inline JS; <link rel="icon" href="data:,">
+  - Thread gauge: show "Traadbelastning: X %"; Warn@70 / Hard@85 / Cut@95
+  - Always print full clickable URLs in answers
+
+• Known gotchas & resolutions
+  - 404 from /allowlist or /pdf/make on CDN pages -> use absolute PROXY_BASE (e.g., https://renolie-proxy.onrender.com)
+  - "Unexpected token '<'" on JSON -> check status + content-type before JSON.parse
+  - Favicon blocked by CSP -> use data: favicon and img-src 'self' data:
+  - XML feeds (Google Merchant) -> proxy p110 parses via XML/Atom/g:* tags
+  - Do not add test PDF data to proxy; keep backend clean
+
+• Next hooks (Phase 2)
+  - Set PDF_BACKEND_URL; keep same JSON contract; UI unchanged
+  - Implement s101 persona autosave + simple debug panel (M5.1..M5.3)
+  - Add /chat/stream with a101 SSE; prompt presets; rate limiting

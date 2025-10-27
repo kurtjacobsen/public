@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "generated_at": "2025-10-27T12:02:43+0000",
+  "project": "RENOLIE PDF-generator & Chat",
+  "phase": "2.0.0",
+  "env_defaults": {
+    "CORS_ORIGIN": "https://shop96018.sfstatic.io",
+    "MODEL_DEFAULT": "gpt-5",
+    "ALLOWLIST_FEED_URL": "<set-to-live-feed-url>",
+    "PDF_BACKEND_URL": "<optional until real PDF is ready>",
+    "PROXY_BASE": "https://renolie-proxy.onrender.com"
+  },
+  "artifacts": []
+}

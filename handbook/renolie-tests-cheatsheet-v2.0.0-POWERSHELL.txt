@@ -1,0 +1,23 @@
+RENOLIE v2.0.0 — PowerShell cheat sheet (Windows)
+
+# Health
+curl "https://renolie-proxy.onrender.com/healthz" | % { $_.Content }
+
+# Allowlist (live)
+curl "https://renolie-proxy.onrender.com/allowlist" | % { $_.Content }
+
+# PDF (mock mode: no PDF_BACKEND_URL)
+# A valid
+curl -Method POST "https://renolie-proxy.onrender.com/pdf/make" `
+  -Headers @{ "content-type"="application/json" } `
+  -Body '{"recipe":{"title":"Probe","items":[{"label":"X"}],"links":[]}}' | % { $_.Content }
+
+# B missing title -> 400
+curl -Method POST "https://renolie-proxy.onrender.com/pdf/make" `
+  -Headers @{ "content-type"="application/json" } `
+  -Body '{"recipe":{"items":[{"label":"X"}]}}' | % { $_.Content }
+
+# C empty items -> 400
+curl -Method POST "https://renolie-proxy.onrender.com/pdf/make" `
+  -Headers @{ "content-type"="application/json" } `
+  -Body '{"recipe":{"title":"Test","items":[]}}' | % { $_.Content }

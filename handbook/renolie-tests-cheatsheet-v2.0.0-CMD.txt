@@ -1,0 +1,23 @@
+RENOLIE v2.0.0 — CMD cheat sheet (Windows)
+
+1) Health
+  curl "https://renolie-proxy.onrender.com/healthz"
+
+2) Allowlist (live)
+  curl "https://renolie-proxy.onrender.com/allowlist"
+
+3) PDF (mock mode: no PDF_BACKEND_URL)
+  :: A valid
+  curl -X POST "https://renolie-proxy.onrender.com/pdf/make" ^
+    -H "content-type: application/json" ^
+    -d "{""recipe"":{""title"":""Probe"",""items"":[{""label"":""X""}],""links"":[]}}"
+
+  :: B missing title -> 400
+  curl -X POST "https://renolie-proxy.onrender.com/pdf/make" ^
+    -H "content-type: application/json" ^
+    -d "{""recipe"":{""items"":[{""label"":""X""}]}}"
+
+  :: C empty items -> 400
+  curl -X POST "https://renolie-proxy.onrender.com/pdf/make" ^
+    -H "content-type: application/json" ^
+    -d "{""recipe"":{""title"":""Test"",""items"":[]}}"
