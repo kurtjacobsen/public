@@ -1,0 +1,15 @@
+<!-- renolie-handbook-filer-v2.0.4.ascii.html -->
+<h1>RENOLIE — Handbook (filer) v2.0.4</h1>
+<h2>Kommunikations- og testpraksis</h2>
+<ul>
+  <li>ASCII-sikker UI; danske bogstaver som HTML-entiteter (&amp;aelig; &amp;oslash; &amp;&aring; ...).</li>
+  <li>Ankertekst = eksakt filnavn i alle links.</li>
+  <li>N&aring;r en test ikke kan k&oslash;res i browseren, k&oslash;res den i <b>PowerShell</b> (ikke CMD).</li>
+</ul>
+<h2>Proxy &amp; UI</h2>
+<ul>
+  <li>Proxy: <code>renolie-proxy.mjs</code> (seneste stabile: v3.6.43 p212b2 t22fix)</li>
+  <li>UI test: <code>renolie-ui-m5.9-v2.0.19.ascii.html</code> (Blob-URL &aring;bning af data: PDF)</li>
+</ul>
+<h2>Boot Check</h2>
+<p>ZIP=off • README=off • Start=node renolie-proxy.mjs • Build=npm install --omit=dev • ASCII-only UI • Anchor=eksakt filnavn • TZ=Europe/Copenhagen</p>
