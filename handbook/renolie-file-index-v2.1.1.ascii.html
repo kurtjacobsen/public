@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html><head><meta charset="us-ascii"><title>renolie-file-index-v2.1.1.ascii.html</title></head>
+<body>
+<h1>RENOLIE File Index v 2.1.1</h1>
+<p>Opdateret: 2025-10-29 06:19 UTC. Dette dokument er den kanoniske liste over filer &amp; versioner.
+Upload alle .ascii.html til <code>https://github.com/kurtjacobsen/public/tree/main/handbook</code> (RAW-links), og k&oslash;rbare .mjs + package.json i <code>kurtjacobsen/renolie-proxy</code> (Start= <code>node renolie-proxy.mjs</code>, Build=<code>npm install --omit=dev</code>).</p>
+
+<h2>JS‑moduler (12 stk, gennemtestet) → upload til <code>.../handbook/js/</code></h2>
+<ul>
+<li>a101.js</li><li>c105.js</li><li>f104.js</li><li>g101.js</li><li>h101.js</li><li>n101.js</li><li>p104.js</li><li>q101.js</li><li>r101.js</li><li>s102.js</li><li>t101.js</li><li> u106.js</li>
+</ul>
+
+<h2>H&aring;ndbog &amp; statusdokumenter → upload til <code>.../handbook/</code></h2>
+<ul>
+<li><a href="https://raw.githubusercontent.com/kbukurt/kurtjacobsen/public/main/handbook/renolie-master-ledger-v2.0.3.ascii.html">renolie-master-ledger-v2.0.3.ascii.html</a> — T1.3=GR&Oslash;N; T2.0/T2.1=GR&Oslash;N.</li>
+<li><a href="https://raw.githubusercontent.com/kbukurt/kurtjacobsen/public/main/handbook/renolie-handbook-filer-v2.0.3.ascii.html">renolie-handbook-filer-v2.0.3.ascii.html</a> — Regler, RAW-link-krav, Boot Check m.m.</li>
+<li><a href="https://raw.githubusercontent.com/kbukurt/kurtjacobsen/public/main/handbook/renolie-thread-header-v2.0.2.ascii.html">renolie-thread-header-v2.0.2.ascii.html</a> — Skabelon/intro for n&aelig;ste tr&aring;d.</li>
+<li><a href="https://raw.githubusercontent.com/kbukurt/kurtjacobsen/public/main/handbook/renolie-meta-header-v2.0.2.ascii.html">renolie-meta-header-v2.0.2.ascii.html</a> — Meta &amp; kontekst for Fase 2.</li>
+<li><a href="https://raw.githubusercontent.com/kbukurt/kurtjacobsen/public/main/handbook/renolie-ui-m5.9-v2.0.18.ascii.html">renolie-ui-m5.9-v2.0.18.ascii.html</a> — T2 PDF-test UI (Buffer-polyfill, endpoint-felt).</li>
+<li><a href="https://raw.githubusercontent.com/kbukurt/kurtjacobsen/public/main/handbook/renolie-file-index-v2.1.1.ascii.html">renolie-file-index-v2.1.1.ascii.html</a> — dette dokument.</li>
+</ul>
+
+<h2>Privat repo (k&oslash;rbare filer) – placeres i <code>kurtjacobsen/renolie-proxy</code> &amp; omd&oslash;bes til <code>renolie-proxy.mjs</code></h2>
+<ul>
+<li>renolie-proxy-v3.6.40-p212b2-pdfmock.fixed.mjs</li>
+<li>routes-chat-p212b2.mjs</li>
+<li>routes-pdf-mock-v1.mjs</li>
+<li>package.json (med <code>"type":"module"</code>, <code>express</code>/<code>cors</code>/<code>compression</code>/<code>morgan</code>)</li>
+</ul>
+
+<h2>N&aelig;ste step (T2.2)</h2>
+<ul>
+<li>Skift <code>routes-pdf-mock-v1.mjs</code> → <code>routes-pdf-c23c.v1.mjs</code> (rigtig PDF via <code>p104.js</code> i public repo).</li>
+<li>Opdat&eacute;r <code>renolie-proxy.mjs</code> til at importere <code>routes-pdf-c23c.v1.mjs</code>.</li>
+<li>K&oslash;r UI’ens PDF‑test mod rigtige endpoint.</li>
+</ul>
+
+<p>Kontakt denne fil ved n&aelig;ste tr&aring;d-start for at bevare fuld kontekst.</p>
+</body></html>

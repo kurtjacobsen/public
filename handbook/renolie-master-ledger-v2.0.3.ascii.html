@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="us-ascii"><title>renolie-master-ledger-v2.0.3.ascii.html</title></head>
+<body>
+<h1>RENOLIE Master-Ledger v 2.0.3</h1>
+<p>Opdateret: 2025-10-29 06:19 UTC</p>
+
+<h2>Milep&aelig;l M1..M5</h2>
+<ul>
+<li>M1 (r101/f101/n101/a101): stabil stream uden dobbelt-output — <b>GR&Oslash;N</b></li>
+<li>M2 (s101/c101/u101): persona &amp; allowlist caching — <b>GR&Oslash;N</b></li>
+<li>M3 (q101/p104): recipe-&rarr;PDF, basisflow — <b>P&aring;g&aring;r</b></li>
+<li>M4 (t101/g101/h101): telemetry/rate-limit/health — <b>GR&Oslash;N</b> (healthz/envz OK)</li>
+<li>M5.8 (UI): chat‑UI m. streaming, logger, Buffer‑polyfill — <b>GR&Oslash;N</b></li>
+</ul>
+
+<h2>T1 — Stream &amp; Send</h2>
+<ul>
+<li>T1.0–T1.1: ruteafklaring, GET <code>/chat/stream</code>, POST <code>/chat/send</code> — <b>GR&Oslash;N</b></li>
+<li>T1.2: Latency‑m&aring;ling og optimering — hurtig &asymp; 80% hurtigere i snit; ingen dobbelte deltas — <b>GR&Oslash;N</b></li>
+<li>T1.3: p212b2/b3 streaming stabil, standard med mange deltas; hurtig-kæde flush fixet — <b>GR&Oslash;N</b></li>
+</ul>
+
+<h2>T2 — PDF-arbejde</h2>
+<ul>
+<li>T2.0: T2‑UI (renolie‑ui‑m5.9‑v2.0.18.ascii.html) med Buffer‑polyfill og endpoint-felt — <b>GR&Oslash;N</b></li>
+<li>T2.1: /pdf/make (mock) i privat proxy via <code>routes-pdf-mock-v1.mjs</code>; <code>/pdf/healthz</code> og test-POST &rarr; <b>KLAR TIL TEST</b></li>
+<li>T2.2: Erstat mock med <code>routes-pdf-c23c.v1.mjs</code> der bruger <code>p104.js</code> fra public repo — <b>N&aelig;ste skridt</b></li>
+</ul>
+
+<h2>Boot Check</h2>
+<pre>ZIP=off • README=off • Start=node renolie-proxy.mjs • Build=npm install --omit=dev • ASCII-only UI • Anchor=eksakt filnavn • TZ=Europe/Copenhagen</pre>
+
+</body></html>

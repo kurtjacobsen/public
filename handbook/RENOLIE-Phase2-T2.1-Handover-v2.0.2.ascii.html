@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="us-ascii"><title>RENOLIE — Phase 2 → T2.1 Handover v 2.0.2</title></head>
+<body>
+<h1>RENOLIE — Phase 2 → T2.1 Handover v 2.0.2</h1>
+<p><b>Tr&aring;dbelastning :</b> 0 % (0–100) &emsp; <b>Regler :</b> Warn@70 • Hard@85 • Cut@95 &emsp; <b>Phase :</b> 2.0.2 → T2.1</p>
+
+<h2>Hvad er klargjort</h2>
+<ul>
+<li><b>T1.3</b> afsluttet: chat‑stream stabil (hurtig/standard), logger OK.</li>
+<li><b>T2.0</b>: UI (renolie‑ui‑m5.9‑v2.0.18) med Buffer‑polyfill og endpoint‑felt — klar.</li>
+<li><b>T2.1</b>: Privat proxy m. <code>/pdf/make</code> (mock) klar via <code>routes‑pdf‑mock‑v1.mjs</code>.</li>
+</ul>
+
+<h2>Næste skridt (T2.2)</h2>
+<ol>
+<li>Deploy privat: Brug <code>renolie-proxy.mjs</code> (v3.6.40‑p212b2‑pdfmock‑fixed) + <code>routes‑pdf‑mock‑v1.mjs</code> + jeres <code>routes‑chat‑p212b2.mjs</code>. Bekr&aelig;ft <code>/healthz</code> og <code>/pdf/healthz</code>.</li>
+<li>&Aring;bn T2‑UI: <code>https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-ui-m5.9-v2.0.18.ascii.html</code> og test <code>/pdf/make</code> (expect “PDF OK”).</li>
+<li>N&aring;r OK: erstat mock med <code>routes‑pdf‑c23c.v1.mjs</code> (jeg leverer i n&aelig;ste batch) og opdat&eacute;r <code>renolie‑proxy.mjs</code> til at importere den.</li>
+</ol>
+
+<h2>Prim&aelig;re dokumenter (RAW‑links i public repo)</h2>
+<ul>
+<li><a href="https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-master-ledger-v2.0.3.ascii.html">renolie‑master‑ledger‑v2.0.3.ascii.html</a></li>
+<li><a href="https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-handbook-filer-v2.0.3.ascii.html">renolie‑handbook‑filer‑v2.0.3.ascii.html</a></li>
+<li><a href="https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-file-index-v2.1.1.ascii.html">renolie‑file‑index‑v2.1.1.ascii.html</a></li>
+<li><a href="https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-thread-header-v2.0.2.ascii.html">renolie‑thread‑header‑v2.0.2.ascii.html</a></li>
+<li><a href="https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-meta-header-v2.0.2.ascii.html">renolie‑meta‑header‑v2.0.2.ascii.html</a></li>
+<li><a href="https://raw.githubusercontent.com/kurtjacobsen/public/main/handbook/renolie-ui-m5.9-v2.0.18.ascii.html">renolie‑ui‑m5.9‑v2.0.18.ascii.html</a></li>
+</ul>
+
+<h2>Boot Check (gentag ved tr&aring;dstart)</h2>
+<pre>ZIP=off • README=off • Start=node renolie‑proxy.mjs • Build=npm install --omit=dev • ASCII-only UI • Anchor=eksakt filnavn • TZ=Europe/Copenhagen</pre>
+
+</body>
+</html>
