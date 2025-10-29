@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="us-ascii">
+<title>renolie-ui-m5.9-v2.0.18.ascii.html</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>body{font-family:Arial,Helvetica,sans-serif;margin:20px}code,pre{background:#f4f4f4;padding:6px;border-radius:4px}</style>
+</head>
+<body>
+<h1>RENOLIE T2 – PDF test UI</h1>
+<p>Place <code>p104.js</code> and <code>q101.js</code> next to this file. Endpoints default to <code>https://renolie-proxy.onrender.com</code>. This page includes a minimal <code>Buffer</code> polyfill.</p>
+<label>PDF endpoint: <input id="ep" size="60" value="https://renolie-proxy.onrender.com/pdf/make"></label>
+<br/><label>Title: <input id="title" size="40" value="Mild h&amp;aring;rmaske"></label>
+<br/><label>Body (plain text):<br/><textarea id="body" rows="6" cols="80">Dette er en test af PDF‑mocken.</textarea></label>
+<br/><button id="go">Generate PDF</button>
+<pre id="out"></pre>
+<script>window.Buffer = window.Buffer || { from: s => ({ toString: ()=> btoa(unescape(encodeURIComponent(s))) }) };</script>
+<script type="module">
+  import P from './p104.js';
+  import Q from './q101.js';
+  const $=id=>document.getElementById(id);
+  document.getElementById('go').addEventListener('click', async ()=>{
+    const url = $('ep').value.trim();
+    const payload = { title: $('title').value, body: $('body').value };
+    const draft = { title: payload.title, body: payload.body };
+    const v = Q ? Q : { ok:true, data: payload };
+    if (v.ok===false){ $('out').textContent = 'Validation failed: '+(v.errors||[]).join(', '); return; }
+    try{
+      const body = { url: '', content: payload.body, rm_b64: Buffer.from(payload.body,'utf-8').toString('base64') };
+      const res = await fetch(url, { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(body)});
+      const j = await res.json();
+      $('out').textContent = JSON.stringify(j,null,2);
+      if(j && j.pdfUrl){ const a=document.createElement('a'); a.href=j.pdfUrl; a.textContent='Open PDF'; document.body.appendChild(a); }
+    }catch(e){ $('out').textContent = 'Error: '+(e&&e.message?e.message:e); }
+  });
+</script>
+</body>
+</html>

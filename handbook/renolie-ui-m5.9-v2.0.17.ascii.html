@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="us-ascii">
+<title>renolie-ui-m5.9-v2.1.1.ascii.html</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{font-family:Arial,Helvetica,sans-serif;margin:18px}
+h1{font-size:20px;margin:0 0 10px}
+small{opacity:0.8}
+.box{border:1px solid #ddd;border-radius:12px;padding:12px;margin:12px 0}
+label{display:block;margin:6px 0}
+input[type=text]{width:520px;max-width:95%}
+textarea{width:100%;height:120px}
+button{padding:8px 12px;border:1px solid #333;border-radius:8px;background:#fff;cursor:pointer}
+button:disabled{opacity:0.5;cursor:not-allowed}
+pre{background:#f5f5f5;padding:8px 8px;border-radius:6px;white-space:pre-wrap}
+a.btn{display:inline-block;margin-top:8px}
+.bad{color:#8b0000}
+.ok{color:#006400}
+</style>
+</head>
+<body>
+<h1>RENOLIE PDF-panel (m5.9 v2.1.1)</h1>
+<small>Boot Check: ZIP=off &#8226; README=off &#8226; Start=node renolie-proxy.mjs &#8226; Build=npm install --omit=dev &#8226; ASCII-only UI &#8226; Anchor=exact filename</small>
+
+<div class="box">
+  <b>Opskrift</b>
+  <label>Titel
+    <input id="title" type="text" value="Mild h&amp;#229;rmaske">
+  </label>
+  <label>Ingredienser (en pr. linje, format: navn|maengde|enhed)
+    <textarea id="ingredients">Vand|70|%
+Kokosglucosid|12|%
+Glycerin|3|%
+Konservering|1|%
+Duft|0.5|%</textarea>
+  </label>
+  <label>Trin (en pr. linje)
+    <textarea id="steps">Bland vand og glycerin.
+Tilsaet tensid og roer forsigtigt.
+Tilf&#248;j konservering og duft.
+Haeld paa flaske.</textarea>
+  </label>
+</div>
+
+<div class="box">
+  <b>PDF</b>
+  <label>PDF endpoint (POST): <input id="pdfUrl" type="text" value="https://renolie-proxy.onrender.com/pdf/make"></label>
+  <label>Filnavn-hint (ASCII): <input id="filename" type="text" value="recipe.txt"></label>
+  <button id="btnValidate">Validate (q101)</button>
+  <button id="btnMake">Generer PDF (p104)</button>
+</div>
+
+<div class="box">
+  <b>Resultat</b>
+  <div id="status" class="ok"></div>
+  <div id="link"></div>
+  <pre id="log"></pre>
+</div>
+
+<!-- Minimal Buffer polyfill for browsers (supports Buffer.from(str,'utf8').toString('base64')) -->
+<script>
+(function(){
+  if (typeof window !== 'undefined' && typeof window.Buffer === 'undefined'){
+    function toUint8(str){
+      var enc = new TextEncoder();
+      return enc.encode(String(str));
+    }
+    function from(input, enc){
+      if (input instanceof Uint8Array){
+        return {
+          _b: input,
+          toString: function(fmt){
+            if (fmt === 'base64'){
+              var bin = '';
+              for (var i=0;i<this._b.length;i++){ bin += String.fromCharCode(this._b[i]); }
+              return btoa(bin);
+            }
+            var dec = new TextDecoder();
+            return dec.decode(this._b);
+          }
+        };
+      } else {
+        var u8 = toUnescapedUtf8(String(input));
+        return {
+          _b: u8,
+          toString: function(fmt){
+            if (fmt === 'base64'){
+              var bin = '';
+              for (var i=0;i<this._b.length;i++){ bin += String.fromCharCode(this._b[i]); }
+              return btoa(bin);
+            }
+            var dec = new TextDecoder();
+            return dec.decode(this._b);
+          }
+        };
+      }
+    }
+    function toUnescapedUtf8(str){
+      // ensure proper utf8 encoding before btoa
+      const utf8 = unescape(encodeURIComponent(str));
+      const arr = new Uint8Array(utf8.length);
+      for (let i=0;i<utf8.length;i++){ arr[i] = utf8.charCodeAt(i); }
+      return arr;
+    }
+    window.Buffer = { from: from };
+  }
+})();
+</script>
+
+<script type="module">
+  import { validate } from './q101.js';
+  import P from './p104.js'; // default export with .make
+
+  const $ = (id)=>document.getElementById(id);
+  const log = (m)=>{ const el=$('worklog')||document.getElementById('log'); el.textContent += m + '\n'; el.scrollTop = el.scrollHeight; };
+  const setStatus = (ok,msg)=>{ const el=$('status'); el.className = ok?'ok':'bad'; el.textContent = msg; };
+  const setLink = (href)=>{ const el=$('link'); el.innerHTML = href ? ('<a class=\"btn\" href=\"'+href+'\" target=\"_blank\" rel=\"noopener\">'+href+'</a>') : ''; };
+
+  function readDraft(){
+    const title = $('title').value;
+    const ingLines = $('ingredients').value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+    const stepLines = $('steps').value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+    const ingredients = ingLines.map(line=>{
+      const parts = line.split('|');
+      return { name:(parts[0]||'').trim(), amount:(parts[1]||'').trim(), unit:(parts[2]||'').trim() };
+    });
+    return { title, ingredients, steps: stepLines, meta:{ ui:'m5.9-v2.1.1' } };
+  }
+
+  document.getElementById('btnValidate').addEventListener('click', ()=>{
+    document.getElementById('log').textContent = '';
+    setStatus(true,'');
+    setLink('');
+    const draft = read_dr();
+    const v = validate(draft);
+    if(!v.ok){ setStatus(false,'VALIDATION FAILED'); document.getElementById('log').textContent = (v.errors||[]).join(', '); return; }
+    setTimeout(()=>{ document.getElementById('log').textContent = JSON.stringify(v.data,null,2); },0);
+  });
+
+  function read_dr(){ return readDraft(); }
+
+  document.getElementById('btnMake').addEventListener('click', async ()=>{
+    document.getElementById('log').textContent = '';
+    setStatus(true,'');
+    setLink('');
+    const draft = read_dr();
+    const v = validate(draft);
+    if(!v.ok){ setStatus(false,'VALIDATION FAILED'); document.getElementById('log').textContent = (v.errors||[]).join(', '); return; }
+    const url = document.getElementById('pdfUrl').value.trim();
+    const filename = document.getElementById('filename').value.trim() || 'recipe.txt';
+    setStatus(true,'KALDER p104.make ...');
+    try{
+      const r = await P.make(v.data, { url, filename, timeoutMs: 20000 });
+      document.getElementById('log').textContent = JSON.stringify(r, null, 2);
+      if(r && r.ok && r.pdfUrl){ setStatus(true,'PDF OK'); setLink(r.pdfUrl); }
+      else { setStatus(false,'PDF FAIL'); }
+    }catch(e){
+      setStatus(false, 'FEJL: ' + (e && e.message ? e.message : e));
+    }
+  });
+</script>
+</body>
+</html>
