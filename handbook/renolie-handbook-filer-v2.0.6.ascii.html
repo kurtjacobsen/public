@@ -1,0 +1,49 @@
+<!-- renolie-handbook-filer-v2.0.6.ascii.html -->
+<h1>RENOLIE — Handbook (filer) v2.0.6</h1>
+
+<h2>Kommunikations- og leveringsregler</h2>
+<ul>
+  <li><b>Ingen auto-omd&oslash;bning:</b> Assistenten omd&oslash;ber aldrig filer. Svaret skal altid angive <i>hvilke filer brugeren selv omd&oslash;ber efter upload</i> (typisk: renolie-proxy-*.mjs &rarr; <code>renolie-proxy.mjs</code>, package.*.json &rarr; <code>package.json</code>).</li>
+  <li><b>PowerShell-first:</b> Tests der ikke kan k&oslash;res i browseren (fx <code>POST /pdf/make</code>) k&oslash;res i <b>PowerShell</b>, ikke CMD.</li>
+  <li><b>ASCII-sikker UI:</b> Danske bogstaver som HTML-entiteter (&amp;aelig; &amp;oslash; &amp;&aring; ...); ankertekst=eksakt filnavn.</li>
+</ul>
+
+<h2>T2.6 Status</h2>
+<ul>
+  <li><b>p104.v1.2</b>: Bruger fonte fra <code>./fonts</code> (NotoSans-Regular/Bold/Italic/BoldItalic). Header m. timestamp, footer m. brand + "Side X". Multi-side layout.</li>
+  <li><b>routes-pdf-c23c.v4d</b>: <code>/pdf/healthz</code> viser <code>impl</code>, <code>ttlMin</code>, <code>tmp</code>, <code>cleanup</code> (count/expired) og <code>fonts</code> (regular/bold/italic/boldItal). <code>POST /pdf/make</code> returnerer ogs&aring; <code>cleanup.removed</code>.</li>
+  <li><b>renolie-proxy v3.6.49</b>: Ingen fallback <code>/pdf/healthz</code>. K&oslash;rer baggrundsoprydning af <code>/tmp</code> hver <code>PROXY_CLEAN_INTERVAL_MIN</code> min.</li>
+</ul>
+
+<h2>Milj&oslash;variabler (Render)</h2>
+<ul>
+  <li><code>PDF_ENGINE=c23c</code>, <code>PDF_IMPL=p104</code></li>
+  <li><code>PDF_TTL_MIN=60</code> (standard)</li>
+  <li><code>PROXY_CLEAN_INTERVAL_MIN=10</code> (baggrundsoprydning)</li>
+  <li><code>CORS_ORIGIN=https://shop96018.sfstatic.io</code></li>
+  <li>(valgfrit) <code>SELF_URL=https://renolie-proxy.onrender.com</code></li>
+</ul>
+
+<h2>Filer (T2.6)</h2>
+<table border="1" cellspacing="0" cellpadding="4">
+<tr><th>Fil</th><th>Skal omd&oslash;bes efter upload?</th><th>Bem&aelig;rkning</th></tr>
+<tr><td>renolie-proxy-v3.6.49-p212b2-t26.mjs</td><td><b>Ja</b> &rarr; <code>renolie-proxy.mjs</code></td><td>Mount v4d; baggrundsoprydning</td></tr>
+<tr><td>p104.v1.2.mjs</td><td><b>Ja</b> &rarr; <code>p104.js</code></td><td>NotoSans; header/footer; multi-side</td></tr>
+<tr><td>routes-pdf-c23c.v4d.mjs</td><td>Nej</td><td>Health + cleanup + fontstatus</td></tr>
+<tr><td>fonts/NotoSans-*.ttf</td><td>Nej</td><td>Allerede i projektet</td></tr>
+</table>
+
+<h2>PowerShell quick-tests</h2>
+<pre><code># Health (viser ttlMin, cleanup, fonts)
+Invoke-RestMethod -Method Get -Uri "https://renolie-proxy.onrender.com/pdf/healthz"
+
+# Make (markdown) og &aring;bn pdfUrl i browseren
+$r = Invoke-RestMethod -Method Post `
+  -Uri "https://renolie-proxy.onrender.com/pdf/make" `
+  -ContentType "application/json" `
+  -Body '{"recipe_markdown":"# NotoSans test
+- &aelig; &oslash; &aring;
+- Sidefod + sidetal"}'
+$r.pdfUrl
+$r.cleanup
+</code></pre>
