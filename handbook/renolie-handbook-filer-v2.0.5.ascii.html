@@ -1,0 +1,16 @@
+<!-- renolie-handbook-filer-v2.0.5.ascii.html -->
+<h1>RENOLIE — Handbook (filer) v2.0.5</h1>
+<h2>Kommunikations- og leveringsregler</h2>
+<ul>
+  <li><b>Ingen auto-omd&oslash;bning:</b> Assistenten omd&oslash;ber aldrig filer. Svaret skal angive <i>hvilke filer brugeren selv omd&oslash;ber efter upload</i> (typisk: renolie-proxy-*.mjs &rarr; <code>renolie-proxy.mjs</code>, package.*.json &rarr; <code>package.json</code>).</li>
+  <li><b>PowerShell-first:</b> Tests der ikke kan k&oslash;res i browseren (fx <code>POST /pdf/make</code>) k&oslash;res i <b>PowerShell</b>, ikke CMD.</li>
+  <li><b>ASCII-sikker UI:</b> Danske bogstaver som HTML-entiteter (&amp;aelig; &amp;oslash; &amp;&aring; ...); ankertekst=eksakt filnavn.</li>
+</ul>
+<h2>T2.5a Fils&aelig;t</h2>
+<ul>
+  <li>renolie-proxy-v3.6.47-p212b2-t25a.mjs &rarr; omd&oslash;b til <code>renolie-proxy.mjs</code> p&aring; Render</li>
+  <li>p104.v1.1.mjs &rarr; omd&oslash;b til <code>p104.js</code></li>
+  <li>routes-pdf-c23c.v4c.mjs</li>
+</ul>
+<h2>Health &amp; TTL</h2>
+<p><code>/pdf/healthz</code> viser <code>impl</code>, <code>ttlMin</code> og <code>cleanup</code> (count/expired). <code>POST /pdf/make</code> udf&oslash;rer oprydning og returnerer <code>cleanup.removed</code>.</p>
